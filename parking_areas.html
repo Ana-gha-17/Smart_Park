@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>SmartPark - Parking Areas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <style>
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    body { font-family: 'Inter', sans-serif; background-color: #e7fff3; }
+    .font-headline { font-family: 'Manrope', sans-serif; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col text-emerald-950">
+  <header class="fixed top-0 w-full z-50 bg-[#e7fff3]/90 backdrop-blur-md border-b border-emerald-100">
+    <div class="max-w-6xl mx-auto px-6 flex justify-between items-center h-16">
+      <div class="font-headline text-xl font-extrabold text-emerald-800">SmartPark</div>
+      <nav class="hidden md:flex items-center gap-6 text-sm font-semibold">
+        <a href="dashboard.html" class="text-emerald-600 hover:text-emerald-800 transition-colors">Dashboard</a>
+        <a href="parking_areas.html" class="text-emerald-800 border-b-2 border-emerald-600 pb-0.5">Parking Areas</a>
+        <a href="my_bookings.html" class="text-emerald-600 hover:text-emerald-800 transition-colors">My Bookings</a>
+      </nav>
+      <button onclick="window.location.href='login.html'" class="flex items-center gap-2 px-4 py-2 bg-emerald-700 text-white rounded-full text-sm font-semibold hover:bg-emerald-800 transition-all">
+        <span class="material-symbols-outlined text-lg">logout</span> Logout
+      </button>
+    </div>
+  </header>
+
+  <main class="flex-grow pt-24 pb-12 px-6 max-w-6xl mx-auto w-full">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+      <div>
+        <h1 class="font-headline text-4xl font-extrabold text-emerald-900 mb-1">Parking Areas</h1>
+        <p class="text-emerald-600">Real-time availability across all locations.</p>
+      </div>
+      <div class="flex items-center gap-2 bg-white px-4 py-2 rounded-xl shadow-sm border border-emerald-50">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span class="text-sm font-semibold text-emerald-700">142 Slots Available</span>
+      </div>
+    </div>
+
+    <!-- Search -->
+    <div class="relative mb-8">
+      <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-emerald-400">search</span>
+      <input type="text" placeholder="Search by area name..." class="w-full pl-12 pr-4 py-3.5 bg-white border border-emerald-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all shadow-sm"/>
+    </div>
+
+    <!-- Area Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Each card links to slots.html with area param -->
+      <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-emerald-50 hover:-translate-y-1 hover:shadow-md transition-all group">
+        <div class="h-40 bg-gradient-to-br from-emerald-400 to-emerald-700 flex items-center justify-center">
+          <span class="material-symbols-outlined text-white text-6xl" style="font-variation-settings:'FILL' 1">local_parking</span>
+        </div>
+        <div class="p-5">
+          <div class="flex justify-between items-start mb-1">
+            <h3 class="font-headline text-xl font-bold text-emerald-900">North Wing</h3>
+            <div class="text-right"><span class="text-2xl font-extrabold text-emerald-700 font-headline">24</span><br><span class="text-[10px] uppercase font-bold text-emerald-500">Available</span></div>
+          </div>
+          <p class="text-emerald-500 text-sm mb-3">Floor 1, Zone B</p>
+          <div class="h-2 bg-emerald-50 rounded-full mb-4 overflow-hidden">
+            <div class="h-full bg-emerald-500 rounded-full" style="width:65%"></div>
+          </div>
+          <a href="slots.html?area=North+Wing" class="block w-full py-3 bg-emerald-700 text-white text-center rounded-full font-bold text-sm hover:bg-emerald-800 transition-all">View Slots</a>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-emerald-50 hover:-translate-y-1 hover:shadow-md transition-all">
+        <div class="h-40 bg-gradient-to-br from-teal-400 to-teal-700 flex items-center justify-center">
+          <span class="material-symbols-outlined text-white text-6xl" style="font-variation-settings:'FILL' 1">garage</span>
+        </div>
+        <div class="p-5">
+          <div class="flex justify-between items-start mb-1">
+            <h3 class="font-headline text-xl font-bold text-emerald-900">Basement A</h3>
+            <div class="text-right"><span class="text-2xl font-extrabold text-emerald-700 font-headline">08</span><br><span class="text-[10px] uppercase font-bold text-emerald-500">Available</span></div>
+          </div>
+          <p class="text-emerald-500 text-sm mb-3">Level -1, Zone A</p>
+          <div class="h-2 bg-emerald-50 rounded-full mb-4 overflow-hidden">
+            <div class="h-full bg-emerald-500 rounded-full" style="width:90%"></div>
+          </div>
+          <a href="slots.html?area=Basement+A" class="block w-full py-3 bg-emerald-700 text-white text-center rounded-full font-bold text-sm hover:bg-emerald-800 transition-all">View Slots</a>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-emerald-50 hover:-translate-y-1 hover:shadow-md transition-all">
+        <div class="h-40 bg-gradient-to-br from-green-400 to-green-700 flex items-center justify-center">
+          <span class="material-symbols-outlined text-white text-6xl" style="font-variation-settings:'FILL' 1">wb_sunny</span>
+        </div>
+        <div class="p-5">
+          <div class="flex justify-between items-start mb-1">
+            <h3 class="font-headline text-xl font-bold text-emerald-900">Sky Deck</h3>
+            <div class="text-right"><span class="text-2xl font-extrabold text-emerald-700 font-headline">56</span><br><span class="text-[10px] uppercase font-bold text-emerald-500">Available</span></div>
+          </div>
+          <p class="text-emerald-500 text-sm mb-3">Floor 5, All Zones</p>
+          <div class="h-2 bg-emerald-50 rounded-full mb-4 overflow-hidden">
+            <div class="h-full bg-emerald-500 rounded-full" style="width:30%"></div>
+          </div>
+          <a href="slots.html?area=Sky+Deck" class="block w-full py-3 bg-emerald-700 text-white text-center rounded-full font-bold text-sm hover:bg-emerald-800 transition-all">View Slots</a>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-emerald-50 hover:-translate-y-1 hover:shadow-md transition-all">
+        <div class="h-40 bg-gradient-to-br from-emerald-500 to-cyan-700 flex items-center justify-center">
+          <span class="material-symbols-outlined text-white text-6xl" style="font-variation-settings:'FILL' 1">apartment</span>
+        </div>
+        <div class="p-5">
+          <div class="flex justify-between items-start mb-1">
+            <h3 class="font-headline text-xl font-bold text-emerald-900">East Plaza</h3>
+            <div class="text-right"><span class="text-2xl font-extrabold text-emerald-700 font-headline">12</span><br><span class="text-[10px] uppercase font-bold text-emerald-500">Available</span></div>
+          </div>
+          <p class="text-emerald-500 text-sm mb-3">Floor 1, Zone D</p>
+          <div class="h-2 bg-emerald-50 rounded-full mb-4 overflow-hidden">
+            <div class="h-full bg-emerald-500 rounded-full" style="width:78%"></div>
+          </div>
+          <a href="slots.html?area=East+Plaza" class="block w-full py-3 bg-emerald-700 text-white text-center rounded-full font-bold text-sm hover:bg-emerald-800 transition-all">View Slots</a>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-emerald-50 hover:-translate-y-1 hover:shadow-md transition-all">
+        <div class="h-40 bg-gradient-to-br from-yellow-500 to-emerald-700 flex items-center justify-center">
+          <span class="material-symbols-outlined text-white text-6xl" style="font-variation-settings:'FILL' 1">grade</span>
+        </div>
+        <div class="p-5">
+          <div class="flex justify-between items-start mb-1">
+            <h3 class="font-headline text-xl font-bold text-emerald-900">VIP Lounge</h3>
+            <div class="text-right"><span class="text-2xl font-extrabold text-emerald-700 font-headline">04</span><br><span class="text-[10px] uppercase font-bold text-emerald-500">Available</span></div>
+          </div>
+          <p class="text-emerald-500 text-sm mb-3">Ground Floor, Private</p>
+          <div class="h-2 bg-emerald-50 rounded-full mb-4 overflow-hidden">
+            <div class="h-full bg-emerald-500 rounded-full" style="width:85%"></div>
+          </div>
+          <a href="slots.html?area=VIP+Lounge" class="block w-full py-3 bg-emerald-700 text-white text-center rounded-full font-bold text-sm hover:bg-emerald-800 transition-all">View Slots</a>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-emerald-50 hover:-translate-y-1 hover:shadow-md transition-all">
+        <div class="h-40 bg-gradient-to-br from-teal-500 to-emerald-800 flex items-center justify-center">
+          <span class="material-symbols-outlined text-white text-6xl" style="font-variation-settings:'FILL' 1">location_city</span>
+        </div>
+        <div class="p-5">
+          <div class="flex justify-between items-start mb-1">
+            <h3 class="font-headline text-xl font-bold text-emerald-900">West Wing</h3>
+            <div class="text-right"><span class="text-2xl font-extrabold text-emerald-700 font-headline">38</span><br><span class="text-[10px] uppercase font-bold text-emerald-500">Available</span></div>
+          </div>
+          <p class="text-emerald-500 text-sm mb-3">Floor 2, Zone C</p>
+          <div class="h-2 bg-emerald-50 rounded-full mb-4 overflow-hidden">
+            <div class="h-full bg-emerald-500 rounded-full" style="width:45%"></div>
+          </div>
+          <a href="slots.html?area=West+Wing" class="block w-full py-3 bg-emerald-700 text-white text-center rounded-full font-bold text-sm hover:bg-emerald-800 transition-all">View Slots</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="py-6 bg-emerald-100 text-center text-xs text-emerald-600 font-medium uppercase tracking-widest">
+    © 2024 SmartPark Digital Ecosystem. All rights reserved.
+  </footer>
+</body>
+</html>

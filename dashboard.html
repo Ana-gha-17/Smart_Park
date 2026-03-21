@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>SmartPark - Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <style>
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    body { font-family: 'Inter', sans-serif; background-color: #e7fff3; }
+    .font-headline { font-family: 'Manrope', sans-serif; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col text-emerald-950">
+  <!-- Nav -->
+  <header class="fixed top-0 w-full z-50 bg-[#e7fff3]/90 backdrop-blur-md border-b border-emerald-100">
+    <div class="max-w-6xl mx-auto px-6 flex justify-between items-center h-16">
+      <div class="font-headline text-xl font-extrabold text-emerald-800">SmartPark</div>
+      <nav class="hidden md:flex items-center gap-6 text-sm font-semibold">
+        <a href="dashboard.html" class="text-emerald-800 border-b-2 border-emerald-600 pb-0.5">Dashboard</a>
+        <a href="parking_areas.html" class="text-emerald-600 hover:text-emerald-800 transition-colors">Parking Areas</a>
+        <a href="my_bookings.html" class="text-emerald-600 hover:text-emerald-800 transition-colors">My Bookings</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <button class="p-2 hover:bg-emerald-100 rounded-lg transition-all">
+          <span class="material-symbols-outlined text-emerald-600">notifications</span>
+        </button>
+        <button onclick="window.location.href='login.html'" class="flex items-center gap-2 px-4 py-2 bg-emerald-700 text-white rounded-full text-sm font-semibold hover:bg-emerald-800 transition-all">
+          <span class="material-symbols-outlined text-lg">logout</span> Logout
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow pt-24 pb-12 px-6 max-w-6xl mx-auto w-full">
+    <section class="mb-10">
+      <h1 class="font-headline text-4xl font-extrabold text-emerald-900 mb-1">Welcome back, <span class="text-emerald-600">User</span> 👋</h1>
+      <p class="text-emerald-600">Your parking dashboard is ready.</p>
+    </section>
+
+    <!-- Stats Row -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-emerald-50">
+        <p class="text-xs font-bold uppercase tracking-widest text-emerald-500 mb-1">Active Bookings</p>
+        <p class="font-headline text-3xl font-extrabold text-emerald-800">2</p>
+      </div>
+      <div class="bg-emerald-700 rounded-2xl p-5 shadow-sm">
+        <p class="text-xs font-bold uppercase tracking-widest text-white/70 mb-1">Wallet</p>
+        <p class="font-headline text-3xl font-extrabold text-white">$42.50</p>
+      </div>
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-emerald-50">
+        <p class="text-xs font-bold uppercase tracking-widest text-emerald-500 mb-1">Total Bookings</p>
+        <p class="font-headline text-3xl font-extrabold text-emerald-800">48</p>
+      </div>
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-emerald-50">
+        <p class="text-xs font-bold uppercase tracking-widest text-emerald-500 mb-1">Zone Status</p>
+        <p class="font-headline text-2xl font-extrabold text-emerald-800">75% Full</p>
+      </div>
+    </div>
+
+    <!-- Main Actions -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+      <!-- View Parking Areas -->
+      <a href="parking_areas.html" class="group bg-white rounded-2xl p-8 shadow-sm border border-emerald-50 hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer col-span-2 flex flex-col justify-between min-h-48">
+        <div>
+          <div class="w-14 h-14 bg-emerald-100 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-emerald-200 transition-colors">
+            <span class="material-symbols-outlined text-emerald-700 text-3xl">directions_car</span>
+          </div>
+          <h2 class="font-headline text-2xl font-bold text-emerald-900 mb-2">View Parking Areas</h2>
+          <p class="text-emerald-600">Browse real-time availability across all smart zones.</p>
+        </div>
+        <div class="flex items-center gap-1 font-semibold text-emerald-700 mt-5">
+          Explore Zones <span class="material-symbols-outlined">arrow_forward</span>
+        </div>
+      </a>
+
+      <!-- My Bookings -->
+      <a href="my_bookings.html" class="group bg-emerald-50 rounded-2xl p-8 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer flex flex-col justify-between">
+        <div>
+          <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-5 shadow-sm group-hover:scale-105 transition-transform">
+            <span class="material-symbols-outlined text-emerald-700 text-2xl">calendar_month</span>
+          </div>
+          <h2 class="font-headline text-xl font-bold text-emerald-900 mb-2">My Bookings</h2>
+          <p class="text-emerald-600 text-sm">View and manage all your reservations.</p>
+          <div class="mt-4 space-y-2">
+            <div class="bg-white rounded-lg p-2.5 flex justify-between text-xs font-medium">
+              <span>Zone A - #402</span> <span class="text-emerald-600 font-bold">Active</span>
+            </div>
+            <div class="bg-white/60 rounded-lg p-2.5 flex justify-between text-xs font-medium opacity-60">
+              <span>Zone C - #112</span> <span>Yesterday</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Recent Activity -->
+    <section>
+      <h3 class="font-headline text-xl font-bold text-emerald-900 mb-4">Recent Activity</h3>
+      <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-emerald-50">
+        <table class="w-full text-left">
+          <thead class="bg-emerald-50">
+            <tr>
+              <th class="px-6 py-3 text-xs font-bold uppercase tracking-widest text-emerald-600">Location</th>
+              <th class="px-6 py-3 text-xs font-bold uppercase tracking-widest text-emerald-600">Time</th>
+              <th class="px-6 py-3 text-xs font-bold uppercase tracking-widest text-emerald-600 text-right">Fee</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-emerald-50">
+            <tr class="hover:bg-emerald-50/50 transition-colors">
+              <td class="px-6 py-4"><div class="font-semibold text-sm">North Plaza</div><div class="text-xs text-emerald-500">Spot 45</div></td>
+              <td class="px-6 py-4 text-sm text-emerald-600">Today, 09:12 AM</td>
+              <td class="px-6 py-4 text-right font-bold text-sm">$12.00</td>
+            </tr>
+            <tr class="hover:bg-emerald-50/50 transition-colors">
+              <td class="px-6 py-4"><div class="font-semibold text-sm">East Terminal</div><div class="text-xs text-emerald-500">Spot 12</div></td>
+              <td class="px-6 py-4 text-sm text-emerald-600">Yesterday, 02:45 PM</td>
+              <td class="px-6 py-4 text-right font-bold text-sm">$8.50</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-6 bg-emerald-100 text-center text-xs text-emerald-600 font-medium uppercase tracking-widest">
+    © 2024 SmartPark Digital Ecosystem. All rights reserved.
+  </footer>
+</body>
+</html>

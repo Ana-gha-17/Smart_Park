@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>SmartPark - Manage Parking</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <style>
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    body { font-family: 'Inter', sans-serif; background-color: #e7fff3; }
+    .font-headline { font-family: 'Manrope', sans-serif; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col text-emerald-950">
+  <header class="fixed top-0 w-full z-50 bg-[#e7fff3]/90 backdrop-blur-md border-b border-emerald-100">
+    <div class="max-w-6xl mx-auto px-6 flex justify-between items-center h-16">
+      <div class="font-headline text-xl font-extrabold text-emerald-800">SmartPark <span class="text-xs font-semibold text-emerald-500 ml-1">Admin</span></div>
+      <nav class="hidden md:flex items-center gap-6 text-sm font-semibold">
+        <a href="admin_dashboard.html" class="text-emerald-600 hover:text-emerald-800">Dashboard</a>
+        <a href="manage_parking.html" class="text-emerald-800 border-b-2 border-emerald-600 pb-0.5">Manage Parking</a>
+        <a href="manage_slots.html" class="text-emerald-600 hover:text-emerald-800">Manage Slots</a>
+        <a href="view_bookings.html" class="text-emerald-600 hover:text-emerald-800">Bookings</a>
+        <a href="analytics.html" class="text-emerald-600 hover:text-emerald-800">Analytics</a>
+      </nav>
+      <button onclick="window.location.href='login.html'" class="flex items-center gap-2 px-4 py-2 bg-emerald-700 text-white rounded-full text-sm font-semibold hover:bg-emerald-800 transition-all">
+        <span class="material-symbols-outlined text-lg">logout</span> Logout
+      </button>
+    </div>
+  </header>
+
+  <main class="flex-grow pt-24 pb-12 px-6 max-w-6xl mx-auto w-full">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+      <div>
+        <a href="admin_dashboard.html" class="text-emerald-600 text-sm font-semibold flex items-center gap-1 mb-2 hover:text-emerald-800"><span class="material-symbols-outlined text-lg">arrow_back</span> Back</a>
+        <h1 class="font-headline text-4xl font-extrabold text-emerald-900 mb-1">Manage Parking</h1>
+        <p class="text-emerald-600">Add, edit, or remove parking areas.</p>
+      </div>
+      <button onclick="showAddModal()" class="flex items-center gap-2 px-6 py-3 bg-emerald-700 text-white rounded-full font-bold hover:bg-emerald-800 active:scale-95 transition-all shadow-lg shadow-emerald-200">
+        <span class="material-symbols-outlined">add</span> Add New Area
+      </button>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <!-- Stats Sidebar -->
+      <aside class="lg:col-span-1">
+        <div class="bg-emerald-50 rounded-2xl p-5 space-y-4 mb-5">
+          <h3 class="font-headline font-bold">Global Occupancy</h3>
+          <div class="h-40 bg-white rounded-xl relative overflow-hidden flex items-end">
+            <div class="absolute bottom-0 left-0 right-0 bg-emerald-500 h-[65%] rounded-t-xl"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <span class="text-4xl font-black text-emerald-900">65%</span>
+            </div>
+          </div>
+          <p class="text-xs font-bold uppercase tracking-widest text-emerald-500 text-center">Current Load</p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 shadow-sm border border-emerald-50">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700">
+              <span class="material-symbols-outlined">analytics</span>
+            </div>
+            <div>
+              <p class="text-xs text-emerald-500 font-bold uppercase">Total Revenue</p>
+              <p class="font-headline font-bold text-lg">$14,280</p>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Table -->
+      <div class="lg:col-span-3">
+        <div class="bg-white rounded-2xl shadow-sm border border-emerald-50 overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left" id="areasTable">
+              <thead class="bg-emerald-50">
+                <tr>
+                  <th class="px-5 py-4 text-xs font-bold uppercase tracking-widest text-emerald-500">Area Name</th>
+                  <th class="px-5 py-4 text-xs font-bold uppercase tracking-widest text-emerald-500">Location</th>
+                  <th class="px-5 py-4 text-xs font-bold uppercase tracking-widest text-emerald-500 text-center">Slots</th>
+                  <th class="px-5 py-4 text-xs font-bold uppercase tracking-widest text-emerald-500 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-emerald-50" id="areasBody">
+              </tbody>
+            </table>
+          </div>
+          <div class="px-5 py-4 bg-emerald-50/20 flex items-center justify-between text-sm">
+            <span class="text-emerald-400">Showing 4 of 12 areas</span>
+            <div class="flex gap-1">
+              <button class="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center"><span class="material-symbols-outlined text-sm">chevron_left</span></button>
+              <button class="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Add Modal -->
+  <div id="modal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-6">
+    <div class="bg-white rounded-2xl p-8 w-full max-w-md shadow-2xl">
+      <h2 class="font-headline text-xl font-bold text-emerald-900 mb-5">Add New Parking Area</h2>
+      <div class="space-y-4">
+        <div><label class="block text-xs font-bold uppercase tracking-widest text-emerald-600 mb-1">Area Name</label><input type="text" id="newName" placeholder="e.g. North Wing" class="w-full px-4 py-3 bg-emerald-50 border border-emerald-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all"/></div>
+        <div><label class="block text-xs font-bold uppercase tracking-widest text-emerald-600 mb-1">Location</label><input type="text" id="newLocation" placeholder="e.g. Zone A, Floor 1" class="w-full px-4 py-3 bg-emerald-50 border border-emerald-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all"/></div>
+        <div><label class="block text-xs font-bold uppercase tracking-widest text-emerald-600 mb-1">Total Slots</label><input type="number" id="newSlots" placeholder="e.g. 50" class="w-full px-4 py-3 bg-emerald-50 border border-emerald-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all"/></div>
+      </div>
+      <div class="flex gap-3 mt-6">
+        <button onclick="addArea()" class="flex-1 py-3 bg-emerald-700 text-white rounded-full font-bold hover:bg-emerald-800 transition-all">Add Area</button>
+        <button onclick="closeModal()" class="flex-1 py-3 bg-emerald-50 text-emerald-700 rounded-full font-bold hover:bg-emerald-100 transition-all">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="py-6 bg-emerald-100 text-center text-xs text-emerald-600 font-medium uppercase tracking-widest">
+    © 2024 SmartPark Digital Ecosystem. All rights reserved.
+  </footer>
+
+  <script>
+    let areas = [
+      { name: 'North Plaza Terminal', location: 'Zone A, Main Entrance', slots: 124 },
+      { name: 'East Garage Level 2', location: 'Sector B4, Riverside', slots: 85 },
+      { name: 'Underground Annex', location: 'Basement Level 1', slots: 450 },
+      { name: 'VIP Sky Deck', location: 'Rooftop Section C', slots: 22 },
+    ];
+
+    function renderTable() {
+      const tbody = document.getElementById('areasBody');
+      tbody.innerHTML = areas.map((a, i) => `
+        <tr class="hover:bg-emerald-50/40 transition-colors">
+          <td class="px-5 py-4">
+            <div class="flex items-center gap-2">
+              <div class="w-1.5 h-8 bg-emerald-500 rounded-full"></div>
+              <span class="font-headline font-bold text-sm">${a.name}</span>
+            </div>
+          </td>
+          <td class="px-5 py-4">
+            <div class="flex items-center gap-1 text-emerald-600 text-sm">
+              <span class="material-symbols-outlined text-sm">location_on</span>${a.location}
+            </div>
+          </td>
+          <td class="px-5 py-4 text-center">
+            <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm font-bold">${a.slots}</span>
+          </td>
+          <td class="px-5 py-4 text-right">
+            <div class="flex justify-end gap-2">
+              <button onclick="editArea(${i})" class="p-2 text-blue-500 hover:bg-blue-50 rounded-lg transition-all"><span class="material-symbols-outlined">edit</span></button>
+              <button onclick="deleteArea(${i})" class="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-all"><span class="material-symbols-outlined">delete</span></button>
+            </div>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function showAddModal() { document.getElementById('modal').classList.remove('hidden'); document.getElementById('modal').style.display='flex'; }
+    function closeModal() { document.getElementById('modal').classList.add('hidden'); document.getElementById('modal').style.display=''; }
+    function addArea() {
+      const n = document.getElementById('newName').value;
+      const l = document.getElementById('newLocation').value;
+      const s = document.getElementById('newSlots').value;
+      if (n && l && s) { areas.push({ name: n, location: l, slots: parseInt(s) }); renderTable(); closeModal(); }
+    }
+    function deleteArea(i) { if (confirm('Delete this area?')) { areas.splice(i, 1); renderTable(); } }
+    function editArea(i) { alert('Edit: ' + areas[i].name + '\n(In a real app, this would open an edit form)'); }
+
+    renderTable();
+  </script>
+</body>
+</html>

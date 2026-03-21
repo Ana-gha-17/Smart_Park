@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>SmartPark - Analytics</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <style>
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    body { font-family: 'Inter', sans-serif; background-color: #e7fff3; }
+    .font-headline { font-family: 'Manrope', sans-serif; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col text-emerald-950">
+  <header class="fixed top-0 w-full z-50 bg-[#e7fff3]/90 backdrop-blur-md border-b border-emerald-100">
+    <div class="max-w-6xl mx-auto px-6 flex justify-between items-center h-16">
+      <div class="font-headline text-xl font-extrabold text-emerald-800">SmartPark <span class="text-xs font-semibold text-emerald-500 ml-1">Admin</span></div>
+      <nav class="hidden md:flex items-center gap-6 text-sm font-semibold">
+        <a href="admin_dashboard.html" class="text-emerald-600 hover:text-emerald-800">Dashboard</a>
+        <a href="manage_parking.html" class="text-emerald-600 hover:text-emerald-800">Manage Parking</a>
+        <a href="manage_slots.html" class="text-emerald-600 hover:text-emerald-800">Manage Slots</a>
+        <a href="view_bookings.html" class="text-emerald-600 hover:text-emerald-800">Bookings</a>
+        <a href="analytics.html" class="text-emerald-800 border-b-2 border-emerald-600 pb-0.5">Analytics</a>
+      </nav>
+      <button onclick="window.location.href='login.html'" class="flex items-center gap-2 px-4 py-2 bg-emerald-700 text-white rounded-full text-sm font-semibold hover:bg-emerald-800 transition-all">
+        <span class="material-symbols-outlined text-lg">logout</span> Logout
+      </button>
+    </div>
+  </header>
+
+  <main class="flex-grow pt-24 pb-12 px-6 max-w-6xl mx-auto w-full">
+    <div class="mb-8">
+      <a href="admin_dashboard.html" class="text-emerald-600 text-sm font-semibold flex items-center gap-1 mb-2 hover:text-emerald-800 w-fit"><span class="material-symbols-outlined text-lg">arrow_back</span> Back</a>
+      <h1 class="font-headline text-4xl font-extrabold text-emerald-900 mb-1">Analytics Overview</h1>
+      <p class="text-emerald-600">Real-time performance metrics and insights.</p>
+    </div>
+
+    <!-- Stats Bento -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-emerald-50">
+        <div class="flex justify-between items-start mb-3">
+          <div class="p-2 bg-emerald-50 rounded-lg"><span class="material-symbols-outlined text-emerald-600 text-xl">calendar_today</span></div>
+          <span class="text-xs font-bold text-emerald-600 bg-emerald-100 px-2 py-0.5 rounded-full">+12%</span>
+        </div>
+        <p class="text-xs font-bold uppercase tracking-widest text-emerald-400 mb-1">Total Bookings</p>
+        <h2 class="font-headline text-3xl font-extrabold text-emerald-900">1,284</h2>
+      </div>
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-emerald-50">
+        <div class="flex justify-between items-start mb-3">
+          <div class="p-2 bg-emerald-50 rounded-lg"><span class="material-symbols-outlined text-emerald-600 text-xl">local_parking</span></div>
+          <span class="text-[10px] font-bold text-emerald-400">Real-time</span>
+        </div>
+        <p class="text-xs font-bold uppercase tracking-widest text-emerald-400 mb-1">Available Slots</p>
+        <h2 class="font-headline text-3xl font-extrabold text-emerald-900">42</h2>
+      </div>
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-emerald-50">
+        <div class="flex justify-between items-start mb-3">
+          <div class="p-2 bg-emerald-50 rounded-lg"><span class="material-symbols-outlined text-emerald-600 text-xl">directions_car</span></div>
+          <span class="text-[10px] font-bold text-emerald-400">Level 1-4</span>
+        </div>
+        <p class="text-xs font-bold uppercase tracking-widest text-emerald-400 mb-1">Occupied Slots</p>
+        <h2 class="font-headline text-3xl font-extrabold text-emerald-900">158</h2>
+      </div>
+      <div class="bg-emerald-700 rounded-2xl p-5 shadow-sm">
+        <div class="flex justify-between items-start mb-3">
+          <div class="p-2 bg-white/20 rounded-lg"><span class="material-symbols-outlined text-white text-xl">payments</span></div>
+          <span class="text-xs font-bold text-white/70 bg-white/10 px-2 py-0.5 rounded-full">Today</span>
+        </div>
+        <p class="text-xs font-bold uppercase tracking-widest text-white/70 mb-1">Revenue</p>
+        <h2 class="font-headline text-3xl font-extrabold text-white">$4,920</h2>
+      </div>
+    </div>
+
+    <!-- Charts Row -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+      <!-- Bar Chart -->
+      <div class="lg:col-span-2 bg-white rounded-2xl p-6 shadow-sm border border-emerald-50">
+        <div class="flex justify-between items-center mb-6">
+          <h3 class="font-headline text-lg font-bold">Occupancy Trends</h3>
+          <div class="flex gap-2">
+            <button class="px-3 py-1 bg-emerald-700 text-white text-xs font-bold rounded-full">Weekly</button>
+            <button class="px-3 py-1 bg-emerald-50 text-emerald-600 text-xs font-bold rounded-full hover:bg-emerald-100">Monthly</button>
+          </div>
+        </div>
+        <div class="h-52 flex items-end justify-between gap-3 px-2">
+          <div class="flex flex-col items-center gap-2 flex-1">
+            <div class="w-full bg-emerald-200 rounded-t-lg hover:bg-emerald-500 transition-colors cursor-pointer" style="height:40%"></div>
+            <span class="text-[10px] font-bold text-emerald-400">Mon</span>
+          </div>
+          <div class="flex flex-col items-center gap-2 flex-1">
+            <div class="w-full bg-emerald-400 rounded-t-lg hover:bg-emerald-600 transition-colors cursor-pointer" style="height:65%"></div>
+            <span class="text-[10px] font-bold text-emerald-400">Tue</span>
+          </div>
+          <div class="flex flex-col items-center gap-2 flex-1">
+            <div class="w-full bg-emerald-500 rounded-t-lg hover:bg-emerald-700 transition-colors cursor-pointer" style="height:85%"></div>
+            <span class="text-[10px] font-bold text-emerald-400">Wed</span>
+          </div>
+          <div class="flex flex-col items-center gap-2 flex-1">
+            <div class="w-full bg-emerald-700 rounded-t-lg hover:bg-emerald-800 transition-colors cursor-pointer" style="height:95%"></div>
+            <span class="text-[10px] font-bold text-emerald-400">Thu</span>
+          </div>
+          <div class="flex flex-col items-center gap-2 flex-1">
+            <div class="w-full bg-emerald-400 rounded-t-lg hover:bg-emerald-600 transition-colors cursor-pointer" style="height:70%"></div>
+            <span class="text-[10px] font-bold text-emerald-400">Fri</span>
+          </div>
+          <div class="flex flex-col items-center gap-2 flex-1">
+            <div class="w-full bg-emerald-300 rounded-t-lg hover:bg-emerald-500 transition-colors cursor-pointer" style="height:50%"></div>
+            <span class="text-[10px] font-bold text-emerald-400">Sat</span>
+          </div>
+          <div class="flex flex-col items-center gap-2 flex-1">
+            <div class="w-full bg-emerald-200 rounded-t-lg hover:bg-emerald-400 transition-colors cursor-pointer" style="height:30%"></div>
+            <span class="text-[10px] font-bold text-emerald-400">Sun</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Zone Performance -->
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-emerald-50">
+        <h3 class="font-headline text-lg font-bold mb-6">Zone Performance</h3>
+        <div class="space-y-5">
+          <div>
+            <div class="flex justify-between mb-1.5"><span class="text-sm font-bold">Level A (Executive)</span><span class="text-sm font-bold text-emerald-700">92%</span></div>
+            <div class="h-2.5 bg-emerald-50 rounded-full overflow-hidden"><div class="h-full bg-emerald-600 rounded-full" style="width:92%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-1.5"><span class="text-sm font-bold">Level B (Standard)</span><span class="text-sm font-bold text-emerald-700">78%</span></div>
+            <div class="h-2.5 bg-emerald-50 rounded-full overflow-hidden"><div class="h-full bg-emerald-500 rounded-full" style="width:78%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-1.5"><span class="text-sm font-bold">Level C (Economy)</span><span class="text-sm font-bold text-emerald-700">45%</span></div>
+            <div class="h-2.5 bg-emerald-50 rounded-full overflow-hidden"><div class="h-full bg-emerald-300 rounded-full" style="width:45%"></div></div>
+          </div>
+          <div class="pt-4 border-t border-emerald-50">
+            <div class="flex items-center gap-3 p-3 bg-emerald-50 rounded-xl">
+              <span class="material-symbols-outlined text-emerald-700 text-2xl">trending_up</span>
+              <div><p class="text-xs font-bold uppercase text-emerald-400">Growth Index</p><p class="text-lg font-extrabold text-emerald-800">+18.4%</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Peak Usage + Efficiency -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-emerald-50 rounded-2xl p-6">
+        <div class="flex items-center gap-2 mb-5"><span class="material-symbols-outlined text-emerald-600">schedule</span><h3 class="font-headline text-lg font-bold">Peak Usage Times</h3></div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-white rounded-xl p-4"><p class="text-xs font-bold uppercase text-emerald-400 mb-1">Morning Peak</p><p class="text-lg font-extrabold">08:00 - 10:00</p><p class="text-xs text-emerald-600 font-bold mt-1">94% Occupancy</p></div>
+          <div class="bg-white rounded-xl p-4"><p class="text-xs font-bold uppercase text-emerald-400 mb-1">Evening Peak</p><p class="text-lg font-extrabold">17:00 - 19:00</p><p class="text-xs text-emerald-600 font-bold mt-1">88% Occupancy</p></div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-emerald-50 flex items-center">
+        <div class="flex-1">
+          <h3 class="font-headline text-lg font-bold mb-2">Efficiency Rating</h3>
+          <p class="text-emerald-500 text-sm mb-5">Top 5% of regional SmartParks.</p>
+          <div class="flex gap-5">
+            <div><span class="text-2xl font-extrabold text-emerald-700">A+</span><br><span class="text-[10px] font-bold text-emerald-400 uppercase">Turnover Rate</span></div>
+            <div class="w-px bg-emerald-100 h-10"></div>
+            <div><span class="text-2xl font-extrabold text-emerald-700">12min</span><br><span class="text-[10px] font-bold text-emerald-400 uppercase">Avg Duration</span></div>
+          </div>
+        </div>
+        <!-- Circular chart -->
+        <div class="relative w-28 h-28 hidden sm:flex items-center justify-center">
+          <svg class="w-full h-full -rotate-90">
+            <circle cx="56" cy="56" r="48" fill="transparent" stroke="#ecfdf5" stroke-width="8"/>
+            <circle cx="56" cy="56" r="48" fill="transparent" stroke="#059669" stroke-width="8" stroke-dasharray="301.6" stroke-dashoffset="33"/>
+          </svg>
+          <span class="absolute text-xl font-extrabold text-emerald-700">89%</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="py-6 bg-emerald-100 text-center text-xs text-emerald-600 font-medium uppercase tracking-widest">
+    © 2024 SmartPark Digital Ecosystem. All rights reserved.
+  </footer>
+</body>
+</html>

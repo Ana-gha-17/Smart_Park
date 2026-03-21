@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>SmartPark - Manage Slots</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <style>
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    body { font-family: 'Inter', sans-serif; background-color: #e7fff3; }
+    .font-headline { font-family: 'Manrope', sans-serif; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col text-emerald-950">
+  <header class="fixed top-0 w-full z-50 bg-[#e7fff3]/90 backdrop-blur-md border-b border-emerald-100">
+    <div class="max-w-6xl mx-auto px-6 flex justify-between items-center h-16">
+      <div class="font-headline text-xl font-extrabold text-emerald-800">SmartPark <span class="text-xs font-semibold text-emerald-500 ml-1">Admin</span></div>
+      <nav class="hidden md:flex items-center gap-6 text-sm font-semibold">
+        <a href="admin_dashboard.html" class="text-emerald-600 hover:text-emerald-800">Dashboard</a>
+        <a href="manage_parking.html" class="text-emerald-600 hover:text-emerald-800">Manage Parking</a>
+        <a href="manage_slots.html" class="text-emerald-800 border-b-2 border-emerald-600 pb-0.5">Manage Slots</a>
+        <a href="view_bookings.html" class="text-emerald-600 hover:text-emerald-800">Bookings</a>
+        <a href="analytics.html" class="text-emerald-600 hover:text-emerald-800">Analytics</a>
+      </nav>
+      <button onclick="window.location.href='login.html'" class="flex items-center gap-2 px-4 py-2 bg-emerald-700 text-white rounded-full text-sm font-semibold hover:bg-emerald-800 transition-all">
+        <span class="material-symbols-outlined text-lg">logout</span> Logout
+      </button>
+    </div>
+  </header>
+
+  <main class="flex-grow pt-24 pb-12 px-6 max-w-6xl mx-auto w-full">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+      <div>
+        <a href="admin_dashboard.html" class="text-emerald-600 text-sm font-semibold flex items-center gap-1 mb-2 hover:text-emerald-800"><span class="material-symbols-outlined text-lg">arrow_back</span> Back</a>
+        <h1 class="font-headline text-4xl font-extrabold text-emerald-900 mb-1">Manage Slots</h1>
+        <p class="text-emerald-600">Configure and control individual parking bays.</p>
+      </div>
+      <button onclick="showAddModal()" class="flex items-center gap-2 px-6 py-3 bg-emerald-700 text-white rounded-full font-bold hover:bg-emerald-800 active:scale-95 transition-all shadow-lg shadow-emerald-200">
+        <span class="material-symbols-outlined">add</span> Add New Slot
+      </button>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="bg-white rounded-xl p-4 flex flex-wrap items-center gap-3 mb-6 shadow-sm border border-emerald-50">
+      <div class="relative flex-grow max-w-sm">
+        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-emerald-400">search</span>
+        <input type="text" placeholder="Search by slot ID or area..." class="w-full pl-10 pr-4 py-2 bg-emerald-50 border border-emerald-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all"/>
+      </div>
+      <select class="bg-emerald-50 border border-emerald-100 rounded-xl text-sm px-4 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+        <option>All Areas</option>
+        <option>Level A - North</option>
+        <option>Level B - West</option>
+        <option>Premium Zone</option>
+      </select>
+      <select class="bg-emerald-50 border border-emerald-100 rounded-xl text-sm px-4 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+        <option>All Status</option>
+        <option>Active</option>
+        <option>Maintenance</option>
+      </select>
+    </div>
+
+    <!-- Table -->
+    <div class="bg-white rounded-2xl shadow-sm border border-emerald-50 overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left">
+          <thead class="bg-emerald-50">
+            <tr>
+              <th class="px-5 py-4 text-xs font-bold uppercase tracking-widest text-emerald-500">Slot</th>
+              <th class="px-5 py-4 text-xs font-bold uppercase tracking-widest text-emerald-500">Area / Zone</th>
+              <th class="px-5 py-4 text-xs font-bold uppercase tracking-widest text-emerald-500">Status</th>
+              <th class="px-5 py-4 text-xs font-bold uppercase tracking-widest text-emerald-500">Toggle</th>
+              <th class="px-5 py-4 text-xs font-bold uppercase tracking-widest text-emerald-500 text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-emerald-50" id="slotsBody"></tbody>
+        </table>
+      </div>
+      <div class="px-5 py-4 bg-emerald-50/20 flex items-center justify-between text-sm">
+        <span class="text-emerald-400">Showing 1-5 of 254 slots</span>
+        <div class="flex gap-1">
+          <button class="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center"><span class="material-symbols-outlined text-sm">chevron_left</span></button>
+          <button class="w-8 h-8 rounded-lg bg-emerald-700 text-white text-xs font-bold flex items-center justify-center">1</button>
+          <button class="w-8 h-8 rounded-lg bg-emerald-50 text-xs font-bold flex items-center justify-center">2</button>
+          <button class="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal -->
+  <div id="modal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden items-center justify-center p-6">
+    <div class="bg-white rounded-2xl p-8 w-full max-w-md shadow-2xl">
+      <h2 class="font-headline text-xl font-bold text-emerald-900 mb-5">Add New Slot</h2>
+      <div class="space-y-4">
+        <div><label class="block text-xs font-bold uppercase tracking-widest text-emerald-600 mb-1">Slot Number</label><input type="text" id="newSlotNo" placeholder="e.g. A-105" class="w-full px-4 py-3 bg-emerald-50 border border-emerald-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all"/></div>
+        <div><label class="block text-xs font-bold uppercase tracking-widest text-emerald-600 mb-1">Area</label><input type="text" id="newArea" placeholder="e.g. Level A - North" class="w-full px-4 py-3 bg-emerald-50 border border-emerald-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all"/></div>
+        <div><label class="block text-xs font-bold uppercase tracking-widest text-emerald-600 mb-1">Status</label>
+          <select id="newStatus" class="w-full px-4 py-3 bg-emerald-50 border border-emerald-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all">
+            <option value="active">Active</option>
+            <option value="maintenance">Maintenance</option>
+          </select>
+        </div>
+      </div>
+      <div class="flex gap-3 mt-6">
+        <button onclick="addSlot()" class="flex-1 py-3 bg-emerald-700 text-white rounded-full font-bold hover:bg-emerald-800 transition-all">Add Slot</button>
+        <button onclick="closeModal()" class="flex-1 py-3 bg-emerald-50 text-emerald-700 rounded-full font-bold hover:bg-emerald-100 transition-all">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="py-6 bg-emerald-100 text-center text-xs text-emerald-600 font-medium uppercase tracking-widest">
+    © 2024 SmartPark Digital Ecosystem. All rights reserved.
+  </footer>
+
+  <script>
+    let slots = [
+      { no: 'A-01', id: '4892', area: 'Level A - North', zone: 'Section 2, Entry 1', status: 'active', enabled: true },
+      { no: 'A-02', id: '4893', area: 'Level A - North', zone: 'Section 2, Entry 1', status: 'maintenance', enabled: false },
+      { no: 'P-01', id: '9001', area: 'Premium Zone', zone: 'VIP Lounge Entry', status: 'reserved', enabled: true },
+      { no: 'B-12', id: '5210', area: 'Level B - West', zone: 'Underground - Sec 4', status: 'active', enabled: true },
+      { no: 'C-05', id: '3100', area: 'Level A - North', zone: 'Section 1', status: 'active', enabled: true },
+    ];
+
+    function statusBadge(s) {
+      if (s === 'active') return '<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-700"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>ACTIVE</span>';
+      if (s === 'maintenance') return '<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-red-50 text-red-600"><span class="w-1.5 h-1.5 rounded-full bg-red-400"></span>MAINTENANCE</span>';
+      return '<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-yellow-50 text-yellow-700"><span class="w-1.5 h-1.5 rounded-full bg-yellow-400"></span>RESERVED</span>';
+    }
+
+    function renderTable() {
+      document.getElementById('slotsBody').innerHTML = slots.map((s, i) => `
+        <tr class="hover:bg-emerald-50/40 transition-colors group">
+          <td class="px-5 py-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center text-emerald-700 font-bold text-sm">${s.no}</div>
+              <span class="text-xs text-emerald-500">ID: ${s.id}</span>
+            </div>
+          </td>
+          <td class="px-5 py-4">
+            <p class="font-semibold text-sm">${s.area}</p>
+            <p class="text-xs text-emerald-400">${s.zone}</p>
+          </td>
+          <td class="px-5 py-4">${statusBadge(s.status)}</td>
+          <td class="px-5 py-4">
+            <label class="relative inline-flex items-center cursor-pointer">
+              <input type="checkbox" ${s.enabled ? 'checked' : ''} onchange="toggleSlot(${i}, this.checked)" class="sr-only peer"/>
+              <div class="w-11 h-6 bg-emerald-100 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-600"></div>
+            </label>
+          </td>
+          <td class="px-5 py-4 text-right">
+            <div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+              <button class="p-2 hover:bg-emerald-100 rounded-lg text-emerald-500 transition-colors"><span class="material-symbols-outlined">edit</span></button>
+              <button onclick="deleteSlot(${i})" class="p-2 hover:bg-red-50 rounded-lg text-red-400 transition-colors"><span class="material-symbols-outlined">delete</span></button>
+            </div>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function toggleSlot(i, v) { slots[i].enabled = v; slots[i].status = v ? 'active' : 'maintenance'; renderTable(); }
+    function deleteSlot(i) { if (confirm('Delete slot ' + slots[i].no + '?')) { slots.splice(i, 1); renderTable(); } }
+    function showAddModal() { const m = document.getElementById('modal'); m.classList.remove('hidden'); m.style.display = 'flex'; }
+    function closeModal() { const m = document.getElementById('modal'); m.classList.add('hidden'); m.style.display = ''; }
+    function addSlot() {
+      const n = document.getElementById('newSlotNo').value;
+      const a = document.getElementById('newArea').value;
+      const s = document.getElementById('newStatus').value;
+      if (n && a) { slots.push({ no: n, id: Math.floor(Math.random()*9000+1000), area: a, zone: '', status: s, enabled: s === 'active' }); renderTable(); closeModal(); }
+    }
+    renderTable();
+  </script>
+</body>
+</html>

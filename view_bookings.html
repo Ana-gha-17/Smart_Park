@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>SmartPark - View Bookings</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <style>
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    body { font-family: 'Inter', sans-serif; background-color: #e7fff3; }
+    .font-headline { font-family: 'Manrope', sans-serif; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col text-emerald-950">
+  <header class="fixed top-0 w-full z-50 bg-[#e7fff3]/90 backdrop-blur-md border-b border-emerald-100">
+    <div class="max-w-6xl mx-auto px-6 flex justify-between items-center h-16">
+      <div class="font-headline text-xl font-extrabold text-emerald-800">SmartPark <span class="text-xs font-semibold text-emerald-500 ml-1">Admin</span></div>
+      <nav class="hidden md:flex items-center gap-6 text-sm font-semibold">
+        <a href="admin_dashboard.html" class="text-emerald-600 hover:text-emerald-800">Dashboard</a>
+        <a href="manage_parking.html" class="text-emerald-600 hover:text-emerald-800">Manage Parking</a>
+        <a href="manage_slots.html" class="text-emerald-600 hover:text-emerald-800">Manage Slots</a>
+        <a href="view_bookings.html" class="text-emerald-800 border-b-2 border-emerald-600 pb-0.5">Bookings</a>
+        <a href="analytics.html" class="text-emerald-600 hover:text-emerald-800">Analytics</a>
+      </nav>
+      <button onclick="window.location.href='login.html'" class="flex items-center gap-2 px-4 py-2 bg-emerald-700 text-white rounded-full text-sm font-semibold hover:bg-emerald-800 transition-all">
+        <span class="material-symbols-outlined text-lg">logout</span> Logout
+      </button>
+    </div>
+  </header>
+
+  <main class="flex-grow pt-24 pb-12 px-6 max-w-6xl mx-auto w-full">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+      <div>
+        <a href="admin_dashboard.html" class="text-emerald-600 text-sm font-semibold flex items-center gap-1 mb-2 hover:text-emerald-800"><span class="material-symbols-outlined text-lg">arrow_back</span> Back</a>
+        <h1 class="font-headline text-4xl font-extrabold text-emerald-900 mb-1">Booking Management</h1>
+        <p class="text-emerald-600">Real-time overview of all parking reservations.</p>
+      </div>
+      <div class="relative">
+        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-emerald-400">search</span>
+        <input type="text" placeholder="Search user or slot..." class="pl-9 pr-4 py-2.5 bg-white border border-emerald-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all w-64 shadow-sm"/>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-emerald-50">
+        <p class="text-xs font-bold uppercase tracking-widest text-emerald-500 mb-2">Total Bookings</p>
+        <div class="flex items-baseline gap-2"><p class="font-headline text-3xl font-extrabold text-emerald-900">1,284</p><span class="text-xs font-bold text-emerald-500">+12%</span></div>
+      </div>
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-emerald-50">
+        <p class="text-xs font-bold uppercase tracking-widest text-emerald-500 mb-2">Active Now</p>
+        <div class="flex items-baseline gap-2"><p class="font-headline text-3xl font-extrabold text-emerald-900">342</p><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span></div>
+      </div>
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-emerald-50">
+        <p class="text-xs font-bold uppercase tracking-widest text-emerald-500 mb-2">Peak Slot</p>
+        <p class="font-headline text-2xl font-extrabold text-emerald-900">L2-A04</p>
+      </div>
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-emerald-50">
+        <p class="text-xs font-bold uppercase tracking-widest text-emerald-500 mb-2">Revenue (24h)</p>
+        <p class="font-headline text-2xl font-extrabold text-emerald-700">$4,120</p>
+      </div>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="bg-white/70 rounded-xl p-4 flex flex-wrap items-center gap-3 mb-5 border border-emerald-50">
+      <span class="text-xs font-bold text-emerald-500 uppercase tracking-widest flex items-center gap-1"><span class="material-symbols-outlined text-sm">filter_list</span> Filters:</span>
+      <select class="bg-emerald-50 border border-emerald-100 rounded-lg text-xs font-semibold px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+        <option>All Zones</option><option>North Wing</option><option>South Wing</option><option>Underground</option>
+      </select>
+      <select class="bg-emerald-50 border border-emerald-100 rounded-lg text-xs font-semibold px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+        <option>Any Status</option><option>Confirmed</option><option>In Progress</option><option>Completed</option><option>Canceled</option>
+      </select>
+      <input type="date" class="bg-emerald-50 border border-emerald-100 rounded-lg text-xs font-semibold px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500"/>
+      <button class="ml-auto text-xs font-bold text-emerald-600 hover:underline">Clear All</button>
+    </div>
+
+    <!-- Table -->
+    <div class="bg-white rounded-2xl shadow-sm border border-emerald-50 overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left">
+          <thead class="bg-emerald-50">
+            <tr>
+              <th class="px-5 py-4 text-[10px] font-bold uppercase tracking-widest text-emerald-400">User</th>
+              <th class="px-5 py-4 text-[10px] font-bold uppercase tracking-widest text-emerald-400">Slot ID</th>
+              <th class="px-5 py-4 text-[10px] font-bold uppercase tracking-widest text-emerald-400">Date / Period</th>
+              <th class="px-5 py-4 text-[10px] font-bold uppercase tracking-widest text-emerald-400 text-center">Status</th>
+              <th class="px-5 py-4 text-[10px] font-bold uppercase tracking-widest text-emerald-400 text-right">Action</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-emerald-50">
+            <tr class="hover:bg-emerald-50/30 transition-colors group">
+              <td class="px-5 py-4"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-emerald-100 flex items-center justify-center font-bold text-emerald-700 text-sm">JD</div><div><p class="font-semibold text-sm">Julian Dash</p><p class="text-[10px] text-emerald-400">ABC-1234 • Premium</p></div></div></td>
+              <td class="px-5 py-4"><div class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-emerald-100 text-emerald-700 rounded-lg font-bold text-xs"><span class="material-symbols-outlined text-sm" style="font-variation-settings:'FILL' 1">local_parking</span>L2-A04</div></td>
+              <td class="px-5 py-4"><p class="text-sm font-medium">Oct 24, 2024</p><p class="text-[11px] text-emerald-400">09:00 AM — 05:00 PM</p></td>
+              <td class="px-5 py-4 text-center"><span class="px-2.5 py-1 rounded-full bg-emerald-100/50 text-emerald-700 text-[10px] font-bold uppercase">In Progress</span></td>
+              <td class="px-5 py-4 text-right"><button class="p-2 opacity-0 group-hover:opacity-100 transition-opacity"><span class="material-symbols-outlined text-emerald-400 hover:text-emerald-700">more_vert</span></button></td>
+            </tr>
+            <tr class="hover:bg-emerald-50/30 transition-colors group">
+              <td class="px-5 py-4"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-emerald-100 flex items-center justify-center font-bold text-emerald-700 text-sm">MW</div><div><p class="font-semibold text-sm">Marcus Wright</p><p class="text-[10px] text-emerald-400">XYZ-9876 • Standard</p></div></div></td>
+              <td class="px-5 py-4"><div class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-emerald-100 text-emerald-700 rounded-lg font-bold text-xs"><span class="material-symbols-outlined text-sm" style="font-variation-settings:'FILL' 1">local_parking</span>L1-C12</div></td>
+              <td class="px-5 py-4"><p class="text-sm font-medium">Oct 24, 2024</p><p class="text-[11px] text-emerald-400">10:30 AM — 12:30 PM</p></td>
+              <td class="px-5 py-4 text-center"><span class="px-2.5 py-1 rounded-full bg-blue-50 text-blue-600 text-[10px] font-bold uppercase">Confirmed</span></td>
+              <td class="px-5 py-4 text-right"><button class="p-2 opacity-0 group-hover:opacity-100 transition-opacity"><span class="material-symbols-outlined text-emerald-400 hover:text-emerald-700">more_vert</span></button></td>
+            </tr>
+            <tr class="hover:bg-emerald-50/30 transition-colors group">
+              <td class="px-5 py-4"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-emerald-100 flex items-center justify-center font-bold text-emerald-700 text-sm">SL</div><div><p class="font-semibold text-sm">Sarah Linn</p><p class="text-[10px] text-emerald-400">GHT-5522 • Guest</p></div></div></td>
+              <td class="px-5 py-4"><div class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-emerald-100 text-emerald-700 rounded-lg font-bold text-xs"><span class="material-symbols-outlined text-sm" style="font-variation-settings:'FILL' 1">local_parking</span>L3-B19</div></td>
+              <td class="px-5 py-4"><p class="text-sm font-medium">Oct 23, 2024</p><p class="text-[11px] text-emerald-400">Completed</p></td>
+              <td class="px-5 py-4 text-center"><span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-500 text-[10px] font-bold uppercase">Completed</span></td>
+              <td class="px-5 py-4 text-right"><button class="p-2 opacity-0 group-hover:opacity-100 transition-opacity"><span class="material-symbols-outlined text-emerald-400 hover:text-emerald-700">more_vert</span></button></td>
+            </tr>
+            <tr class="hover:bg-emerald-50/30 transition-colors group">
+              <td class="px-5 py-4"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-red-50 flex items-center justify-center font-bold text-red-500 text-sm">EA</div><div><p class="font-semibold text-sm">Elena Aris</p><p class="text-[10px] text-emerald-400">BBA-4411 • VIP</p></div></div></td>
+              <td class="px-5 py-4"><div class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-emerald-100 text-emerald-700 rounded-lg font-bold text-xs"><span class="material-symbols-outlined text-sm" style="font-variation-settings:'FILL' 1">local_parking</span>L2-D01</div></td>
+              <td class="px-5 py-4"><p class="text-sm font-medium">Oct 25, 2024</p><p class="text-[11px] text-emerald-400">08:00 AM — 06:00 PM</p></td>
+              <td class="px-5 py-4 text-center"><span class="px-2.5 py-1 rounded-full bg-red-50 text-red-600 text-[10px] font-bold uppercase">Canceled</span></td>
+              <td class="px-5 py-4 text-right"><button class="p-2 opacity-0 group-hover:opacity-100 transition-opacity"><span class="material-symbols-outlined text-emerald-400 hover:text-emerald-700">more_vert</span></button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="px-5 py-4 bg-emerald-50/20 flex items-center justify-between text-xs">
+        <span class="text-emerald-400 font-semibold uppercase tracking-widest">Showing 1-10 of 1,284 bookings</span>
+        <div class="flex gap-1">
+          <button class="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center"><span class="material-symbols-outlined text-sm">chevron_left</span></button>
+          <button class="w-8 h-8 rounded-lg bg-emerald-700 text-white font-bold flex items-center justify-center">1</button>
+          <button class="w-8 h-8 rounded-lg bg-emerald-50 font-bold flex items-center justify-center">2</button>
+          <button class="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="py-6 bg-emerald-100 text-center text-xs text-emerald-600 font-medium uppercase tracking-widest">
+    © 2024 SmartPark Digital Ecosystem. All rights reserved.
+  </footer>
+</body>
+</html>

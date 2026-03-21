@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>SmartPark - Booking Successful</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <style>
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    body { font-family: 'Inter', sans-serif; background-color: #e7fff3; }
+    .font-headline { font-family: 'Manrope', sans-serif; }
+    @keyframes scaleIn { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .animate-scale { animation: scaleIn 0.5s cubic-bezier(0.175,0.885,0.32,1.275) forwards; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col overflow-x-hidden">
+  <div class="absolute top-10 right-10 w-64 h-64 bg-emerald-200/40 rounded-full blur-3xl -z-10"></div>
+  <div class="absolute bottom-10 left-10 w-48 h-48 bg-green-200/30 rounded-full blur-3xl -z-10"></div>
+
+  <main class="flex-grow flex items-center justify-center p-6">
+    <div class="max-w-md w-full text-center space-y-8">
+
+      <!-- Success Icon -->
+      <div class="relative inline-block animate-scale">
+        <div class="w-32 h-32 bg-emerald-700 rounded-full flex items-center justify-center shadow-2xl shadow-emerald-300 ring-8 ring-emerald-100">
+          <span class="material-symbols-outlined text-white text-7xl" style="font-variation-settings:'FILL' 1">check_circle</span>
+        </div>
+        <div class="absolute -top-3 -right-3 w-10 h-10 bg-yellow-300 rounded-full flex items-center justify-center shadow-md animate-bounce">
+          <span class="material-symbols-outlined text-yellow-800 text-lg" style="font-variation-settings:'FILL' 1">celebration</span>
+        </div>
+      </div>
+
+      <div>
+        <h1 class="font-headline text-4xl font-extrabold text-emerald-900 mb-2">Booking Successful!</h1>
+        <p class="text-emerald-600">Your spot is reserved and ready for arrival.</p>
+      </div>
+
+      <!-- Ticket Card -->
+      <div class="bg-white rounded-3xl shadow-xl border border-emerald-50 overflow-hidden text-left">
+        <div class="h-2 bg-gradient-to-r from-emerald-600 to-emerald-400"></div>
+        <div class="p-6 space-y-5">
+          <div class="flex justify-between items-start border-b border-emerald-50 pb-5">
+            <div>
+              <p class="text-xs font-bold uppercase tracking-widest text-emerald-400 mb-1">Booking ID</p>
+              <p class="font-headline font-bold text-xl text-emerald-700">#SP-<span id="bookingId"></span></p>
+            </div>
+            <div class="text-right">
+              <p class="text-xs font-bold uppercase tracking-widest text-emerald-400 mb-1">Slot</p>
+              <p class="font-headline font-bold text-xl text-emerald-900" id="slotDisplay"></p>
+            </div>
+          </div>
+
+          <!-- QR Code Placeholder -->
+          <div class="flex flex-col items-center py-3">
+            <div class="w-40 h-40 bg-emerald-50 rounded-2xl flex flex-col items-center justify-center border-2 border-dashed border-emerald-200">
+              <span class="material-symbols-outlined text-emerald-400 text-6xl">qr_code_2</span>
+              <span class="text-[10px] font-bold uppercase tracking-tight text-emerald-400 mt-1">Scan at Entry Gate</span>
+            </div>
+            <p class="text-xs text-emerald-400 mt-2 italic">Show this QR code at the barrier</p>
+          </div>
+
+          <!-- Details -->
+          <div class="grid grid-cols-2 gap-3 bg-emerald-50/50 rounded-xl p-4 text-sm">
+            <div><p class="text-[10px] font-bold uppercase text-emerald-400">Area</p><p class="font-semibold text-emerald-800" id="areaDisplay"></p></div>
+            <div class="text-right"><p class="text-[10px] font-bold uppercase text-emerald-400">Total</p><p class="font-bold text-emerald-700" id="totalDisplay"></p></div>
+            <div><p class="text-[10px] font-bold uppercase text-emerald-400">Date</p><p class="font-semibold text-emerald-800" id="dateDisplay"></p></div>
+            <div class="text-right"><p class="text-[10px] font-bold uppercase text-emerald-400">Time</p><p class="font-semibold text-emerald-800" id="timeDisplay"></p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a href="my_bookings.html" class="flex-1 py-4 bg-emerald-700 text-white font-headline font-bold rounded-full hover:bg-emerald-800 hover:scale-105 active:scale-95 transition-all text-center shadow-lg shadow-emerald-200">
+          Go to My Bookings
+        </a>
+        <a href="dashboard.html" class="flex-1 py-4 bg-emerald-100 text-emerald-800 font-headline font-bold rounded-full hover:bg-emerald-200 active:scale-95 transition-all text-center">
+          Back to Dashboard
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="py-6 bg-emerald-100 text-center text-xs text-emerald-600 font-medium uppercase tracking-widest">
+    © 2024 SmartPark Digital Ecosystem. All rights reserved.
+  </footer>
+
+  <script>
+    const p = new URLSearchParams(window.location.search);
+    document.getElementById('bookingId').textContent = Math.floor(10000 + Math.random() * 90000) + '-X';
+    document.getElementById('slotDisplay').textContent = 'Slot ' + (p.get('slot') || 'A-42');
+    document.getElementById('areaDisplay').textContent = p.get('area') || 'North Wing';
+    document.getElementById('totalDisplay').textContent = p.get('total') || '$36.00';
+    document.getElementById('dateDisplay').textContent = p.get('date') || new Date().toISOString().split('T')[0];
+    document.getElementById('timeDisplay').textContent = (p.get('start') || '09:00') + ' - ' + (p.get('end') || '17:00');
+  </script>
+</body>
+</html>
