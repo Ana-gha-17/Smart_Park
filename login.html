@@ -164,7 +164,20 @@
 
     function doLogin() {
       const role = document.getElementById('role').value;
-      window.location.href = role === 'admin' ? 'admin_dashboard.html' : 'dashboard.html';
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      
+      if (role === 'admin') {
+        // Check for predefined admin credentials
+        if (username === 'admin' && password === 'admin123') {
+          window.location.href = 'admin_dashboard.html';
+        } else {
+          alert('Invalid admin credentials. Please try again.');
+        }
+      } else {
+        // For standard user, proceed to the dashboard
+        window.location.href = 'dashboard.html';
+      }
     }
   </script>
 </body>
