@@ -1,18 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <title>SmartPark - My Bookings</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
   <style>
-    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
-    body { font-family: 'Inter', sans-serif; background-color: #e7fff3; }
-    .font-headline { font-family: 'Manrope', sans-serif; }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #e7fff3;
+    }
+
+    .font-headline {
+      font-family: 'Manrope', sans-serif;
+    }
   </style>
 </head>
+
 <body class="min-h-screen flex flex-col text-emerald-950">
   <header class="fixed top-0 w-full z-50 bg-[#e7fff3]/90 backdrop-blur-md border-b border-emerald-100">
     <div class="max-w-6xl mx-auto px-6 flex justify-between items-center h-16">
@@ -22,7 +36,8 @@
         <a href="parking_areas.html" class="text-emerald-600 hover:text-emerald-800 transition-colors">Parking Areas</a>
         <a href="my_bookings.html" class="text-emerald-800 border-b-2 border-emerald-600 pb-0.5">My Bookings</a>
       </nav>
-      <button onclick="window.location.href='login.html'" class="flex items-center gap-2 px-4 py-2 bg-emerald-700 text-white rounded-full text-sm font-semibold hover:bg-emerald-800 transition-all">
+      <button onclick="window.location.href='login.html'"
+        class="flex items-center gap-2 px-4 py-2 bg-emerald-700 text-white rounded-full text-sm font-semibold hover:bg-emerald-800 transition-all">
         <span class="material-symbols-outlined text-lg">logout</span> Logout
       </button>
     </div>
@@ -56,10 +71,14 @@
         </div>
         <div class="bg-emerald-50 rounded-2xl p-5 space-y-3">
           <h3 class="font-headline font-bold text-emerald-900">Need Help?</h3>
-          <p class="text-xs text-emerald-600 leading-relaxed">Questions about cancellations or bookings? Our support is 24/7.</p>
-          <button class="w-full py-2.5 bg-emerald-700 text-white rounded-full font-bold text-sm hover:bg-emerald-800 transition-all">Contact Support</button>
+          <p class="text-xs text-emerald-600 leading-relaxed">Questions about cancellations or bookings? Our support is
+            24/7.</p>
+          <button
+            class="w-full py-2.5 bg-emerald-700 text-white rounded-full font-bold text-sm hover:bg-emerald-800 transition-all">Contact
+            Support</button>
         </div>
-        <a href="dashboard.html" class="block w-full py-3 bg-white text-emerald-700 border border-emerald-200 rounded-xl font-semibold text-sm text-center hover:bg-emerald-50 transition-all">
+        <a href="dashboard.html"
+          class="block w-full py-3 bg-white text-emerald-700 border border-emerald-200 rounded-xl font-semibold text-sm text-center hover:bg-emerald-50 transition-all">
           ← Back to Dashboard
         </a>
       </aside>
@@ -69,70 +88,229 @@
         <div class="bg-white rounded-2xl shadow-sm border border-emerald-50 overflow-hidden">
           <div class="p-5 flex flex-col md:flex-row justify-between items-center gap-3 border-b border-emerald-50">
             <div class="relative w-full md:w-64">
-              <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-emerald-400 text-sm">search</span>
-              <input type="text" placeholder="Search by slot or date..." class="w-full pl-9 pr-4 py-2 bg-emerald-50 border border-emerald-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all"/>
+              <span
+                class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-emerald-400 text-sm">search</span>
+              <input type="text" placeholder="Search by slot or date..."
+                class="w-full pl-9 pr-4 py-2 bg-emerald-50 border border-emerald-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all" />
             </div>
             <div class="flex gap-2">
-              <button class="px-4 py-2 bg-emerald-50 text-emerald-700 text-sm font-semibold rounded-xl hover:bg-emerald-100 transition-colors flex items-center gap-1">
+              <button
+                class="px-4 py-2 bg-emerald-50 text-emerald-700 text-sm font-semibold rounded-xl hover:bg-emerald-100 transition-colors flex items-center gap-1">
                 <span class="material-symbols-outlined text-sm">filter_list</span> Filter
               </button>
-              <button class="px-4 py-2 bg-emerald-50 text-emerald-700 text-sm font-semibold rounded-xl hover:bg-emerald-100 transition-colors flex items-center gap-1">
+              <button
+                class="px-4 py-2 bg-emerald-50 text-emerald-700 text-sm font-semibold rounded-xl hover:bg-emerald-100 transition-colors flex items-center gap-1">
                 <span class="material-symbols-outlined text-sm">download</span> Export
               </button>
             </div>
           </div>
 
-          <div class="overflow-x-auto">
-            <table class="w-full text-left">
-              <thead class="bg-emerald-50/50">
-                <tr>
-                  <th class="px-5 py-4 text-xs font-bold uppercase tracking-widest text-emerald-500">Slot ID</th>
-                  <th class="px-5 py-4 text-xs font-bold uppercase tracking-widest text-emerald-500">Date</th>
-                  <th class="px-5 py-4 text-xs font-bold uppercase tracking-widest text-emerald-500">Time</th>
-                  <th class="px-5 py-4 text-xs font-bold uppercase tracking-widest text-emerald-500">Status</th>
-                  <th class="px-5 py-4 text-xs font-bold uppercase tracking-widest text-emerald-500 text-right">Action</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-emerald-50">
-                <tr class="hover:bg-emerald-50/30 transition-colors">
-                  <td class="px-5 py-4"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-lg bg-emerald-100 flex items-center justify-center text-emerald-600"><span class="material-symbols-outlined text-lg">directions_car</span></div><span class="font-bold text-sm">P-204</span></div></td>
-                  <td class="px-5 py-4 text-sm font-medium">May 24, 2024</td>
-                  <td class="px-5 py-4 text-sm text-emerald-500">09:00 AM - 05:00 PM</td>
-                  <td class="px-5 py-4"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-700"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>Active</span></td>
-                  <td class="px-5 py-4 text-right"><button class="text-emerald-600 font-bold text-sm hover:underline">Manage</button></td>
-                </tr>
-                <tr class="hover:bg-emerald-50/30 transition-colors">
-                  <td class="px-5 py-4"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-400"><span class="material-symbols-outlined text-lg">directions_car</span></div><span class="font-bold text-sm">L-112</span></div></td>
-                  <td class="px-5 py-4 text-sm font-medium">May 22, 2024</td>
-                  <td class="px-5 py-4 text-sm text-emerald-500">10:30 AM - 12:30 PM</td>
-                  <td class="px-5 py-4"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-600">Completed</span></td>
-                  <td class="px-5 py-4 text-right"><button class="text-emerald-400 font-bold text-sm hover:underline">Receipt</button></td>
-                </tr>
-                <tr class="hover:bg-emerald-50/30 transition-colors">
-                  <td class="px-5 py-4"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-lg bg-red-50 flex items-center justify-center text-red-400"><span class="material-symbols-outlined text-lg">directions_car</span></div><span class="font-bold text-sm">A-409</span></div></td>
-                  <td class="px-5 py-4 text-sm font-medium">May 20, 2024</td>
-                  <td class="px-5 py-4 text-sm text-emerald-500">08:00 AM - 11:00 AM</td>
-                  <td class="px-5 py-4"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-red-50 text-red-600">Cancelled</span></td>
-                  <td class="px-5 py-4 text-right"><button class="text-emerald-400 font-bold text-sm hover:underline">Details</button></td>
-                </tr>
-                <tr class="hover:bg-emerald-50/30 transition-colors">
-                  <td class="px-5 py-4"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-400"><span class="material-symbols-outlined text-lg">directions_car</span></div><span class="font-bold text-sm">B-105</span></div></td>
-                  <td class="px-5 py-4 text-sm font-medium">May 19, 2024</td>
-                  <td class="px-5 py-4 text-sm text-emerald-500">02:00 PM - 06:00 PM</td>
-                  <td class="px-5 py-4"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-600">Completed</span></td>
-                  <td class="px-5 py-4 text-right"><button class="text-emerald-400 font-bold text-sm hover:underline">Receipt</button></td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="p-5 flex flex-col gap-5">
+            <!-- Card 1 -->
+            <div
+              class="booking-card border border-emerald-100 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all flex flex-col gap-4 bg-white">
+              <div class="flex justify-between items-start">
+                <div>
+                  <div class="flex items-center gap-2 mb-1">
+                    <span class="material-symbols-outlined text-emerald-500 text-xl font-bold">location_on</span>
+                    <h3 class="font-headline font-bold text-lg text-emerald-900">Downtown Plaza</h3>
+                  </div>
+                  <p class="text-xs text-emerald-400 font-mono">ID: bk1774438829945</p>
+                </div>
+                <div class="status-container">
+                  <span
+                    class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-700">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>Active
+                  </span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 py-4 border-y border-emerald-50">
+                <div class="flex flex-col gap-1">
+                  <div class="flex items-center gap-1 text-xs text-emerald-500 font-bold uppercase tracking-wider">
+                    <span class="material-symbols-outlined text-[16px] text-emerald-600">directions_car</span> Slot
+                  </div>
+                  <p class="font-bold text-emerald-900">P-204</p>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <div class="flex items-center gap-1 text-xs text-emerald-500 font-bold uppercase tracking-wider">
+                    <span class="material-symbols-outlined text-[16px] text-emerald-600">calendar_today</span> Date
+                  </div>
+                  <p class="font-medium text-emerald-900">May 24, 2024</p>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <div class="flex items-center gap-1 text-xs text-emerald-500 font-bold uppercase tracking-wider">
+                    <span class="material-symbols-outlined text-[16px] text-emerald-600">schedule</span> Time
+                  </div>
+                  <p class="font-medium text-emerald-900">09:00 AM - 05:00 PM</p>
+                </div>
+              </div>
+
+              <div class="action-container flex gap-3 mt-1">
+                <button onclick="showQRModal('P-204')"
+                  class="flex items-center gap-2 px-4 py-2 bg-emerald-800 text-white rounded-xl font-bold text-sm hover:bg-emerald-900 transition-colors shadow-sm">
+                  <span class="material-symbols-outlined text-[18px]">qr_code</span> Show QR
+                </button>
+                <button onclick="showCancelModal('P-204', this)"
+                  class="flex items-center gap-2 px-4 py-2 bg-rose-50 text-rose-600 border border-rose-100 rounded-xl font-bold text-sm hover:bg-rose-100 transition-colors">
+                  <span class="material-symbols-outlined text-[18px]">close</span> Cancel
+                </button>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div
+              class="booking-card border border-emerald-100 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all flex flex-col gap-4 bg-white">
+              <div class="flex justify-between items-start">
+                <div>
+                  <div class="flex items-center gap-2 mb-1">
+                    <span class="material-symbols-outlined text-emerald-300 text-xl font-bold">location_on</span>
+                    <h3 class="font-headline font-bold text-lg text-emerald-900">Northside Mall</h3>
+                  </div>
+                  <p class="text-xs text-emerald-400 font-mono">ID: bk984328829110</p>
+                </div>
+                <div class="status-container">
+                  <span
+                    class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-600">Completed</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 py-4 border-y border-emerald-50">
+                <div class="flex flex-col gap-1">
+                  <div class="flex items-center gap-1 text-xs text-emerald-500 font-bold uppercase tracking-wider">
+                    <span class="material-symbols-outlined text-[16px] text-emerald-400">directions_car</span> Slot
+                  </div>
+                  <p class="font-bold text-emerald-900">L-112</p>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <div class="flex items-center gap-1 text-xs text-emerald-500 font-bold uppercase tracking-wider">
+                    <span class="material-symbols-outlined text-[16px] text-emerald-400">calendar_today</span> Date
+                  </div>
+                  <p class="font-medium text-emerald-900">May 22, 2024</p>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <div class="flex items-center gap-1 text-xs text-emerald-500 font-bold uppercase tracking-wider">
+                    <span class="material-symbols-outlined text-[16px] text-emerald-400">schedule</span> Time
+                  </div>
+                  <p class="font-medium text-emerald-900">10:30 AM - 12:30 PM</p>
+                </div>
+              </div>
+
+              <div class="action-container flex gap-3 mt-1">
+                <button
+                  class="flex items-center gap-2 px-4 py-2 bg-emerald-50 text-emerald-600 rounded-xl font-bold text-sm hover:bg-emerald-100 transition-colors">
+                  <span class="material-symbols-outlined text-[18px]">receipt</span> Receipt
+                </button>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div
+              class="booking-card border border-emerald-100 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all flex flex-col gap-4 bg-white">
+              <div class="flex justify-between items-start">
+                <div>
+                  <div class="flex items-center gap-2 mb-1">
+                    <span class="material-symbols-outlined text-red-400 text-xl font-bold">location_on</span>
+                    <h3 class="font-headline font-bold text-lg text-emerald-900">Airport Terminal 1</h3>
+                  </div>
+                  <p class="text-xs text-emerald-400 font-mono">ID: bk56711900234</p>
+                </div>
+                <div class="status-container">
+                  <span
+                    class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-red-50 text-red-600">Cancelled</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 py-4 border-y border-emerald-50">
+                <div class="flex flex-col gap-1">
+                  <div class="flex items-center gap-1 text-xs text-emerald-500 font-bold uppercase tracking-wider">
+                    <span class="material-symbols-outlined text-[16px] text-red-400">directions_car</span> Slot
+                  </div>
+                  <p class="font-bold text-emerald-900">A-409</p>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <div class="flex items-center gap-1 text-xs text-emerald-500 font-bold uppercase tracking-wider">
+                    <span class="material-symbols-outlined text-[16px] text-red-400">calendar_today</span> Date
+                  </div>
+                  <p class="font-medium text-emerald-900">May 20, 2024</p>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <div class="flex items-center gap-1 text-xs text-emerald-500 font-bold uppercase tracking-wider">
+                    <span class="material-symbols-outlined text-[16px] text-red-400">schedule</span> Time
+                  </div>
+                  <p class="font-medium text-emerald-900">08:00 AM - 11:00 AM</p>
+                </div>
+              </div>
+
+              <div class="action-container flex gap-3 mt-1">
+                <button
+                  class="flex items-center gap-2 px-4 py-2 bg-emerald-50 text-emerald-600 rounded-xl font-bold text-sm hover:bg-emerald-100 transition-colors">
+                  <span class="material-symbols-outlined text-[18px]">info</span> Details
+                </button>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div
+              class="booking-card border border-emerald-100 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all flex flex-col gap-4 bg-white">
+              <div class="flex justify-between items-start">
+                <div>
+                  <div class="flex items-center gap-2 mb-1">
+                    <span class="material-symbols-outlined text-emerald-300 text-xl font-bold">location_on</span>
+                    <h3 class="font-headline font-bold text-lg text-emerald-900">Eastside Plaza</h3>
+                  </div>
+                  <p class="text-xs text-emerald-400 font-mono">ID: bk29388102931</p>
+                </div>
+                <div class="status-container">
+                  <span
+                    class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-600">Completed</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 py-4 border-y border-emerald-50">
+                <div class="flex flex-col gap-1">
+                  <div class="flex items-center gap-1 text-xs text-emerald-500 font-bold uppercase tracking-wider">
+                    <span class="material-symbols-outlined text-[16px] text-emerald-400">directions_car</span> Slot
+                  </div>
+                  <p class="font-bold text-emerald-900">B-105</p>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <div class="flex items-center gap-1 text-xs text-emerald-500 font-bold uppercase tracking-wider">
+                    <span class="material-symbols-outlined text-[16px] text-emerald-400">calendar_today</span> Date
+                  </div>
+                  <p class="font-medium text-emerald-900">May 19, 2024</p>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <div class="flex items-center gap-1 text-xs text-emerald-500 font-bold uppercase tracking-wider">
+                    <span class="material-symbols-outlined text-[16px] text-emerald-400">schedule</span> Time
+                  </div>
+                  <p class="font-medium text-emerald-900">02:00 PM - 06:00 PM</p>
+                </div>
+              </div>
+
+              <div class="action-container flex gap-3 mt-1">
+                <button
+                  class="flex items-center gap-2 px-4 py-2 bg-emerald-50 text-emerald-600 rounded-xl font-bold text-sm hover:bg-emerald-100 transition-colors">
+                  <span class="material-symbols-outlined text-[18px]">receipt</span> Receipt
+                </button>
+              </div>
+            </div>
+
           </div>
 
           <div class="px-5 py-4 bg-emerald-50/20 flex justify-between items-center">
             <p class="text-xs text-emerald-400">Showing 1 to 4 of 50 bookings</p>
             <div class="flex gap-1">
-              <button class="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center hover:bg-emerald-100 transition-all"><span class="material-symbols-outlined text-sm">chevron_left</span></button>
-              <button class="w-8 h-8 rounded-lg bg-emerald-700 text-white text-xs font-bold flex items-center justify-center">1</button>
-              <button class="w-8 h-8 rounded-lg bg-emerald-50 text-sm font-bold flex items-center justify-center hover:bg-emerald-100">2</button>
-              <button class="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center hover:bg-emerald-100 transition-all"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
+              <button
+                class="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center hover:bg-emerald-100 transition-all"><span
+                  class="material-symbols-outlined text-sm">chevron_left</span></button>
+              <button
+                class="w-8 h-8 rounded-lg bg-emerald-700 text-white text-xs font-bold flex items-center justify-center">1</button>
+              <button
+                class="w-8 h-8 rounded-lg bg-emerald-50 text-sm font-bold flex items-center justify-center hover:bg-emerald-100">2</button>
+              <button
+                class="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center hover:bg-emerald-100 transition-all"><span
+                  class="material-symbols-outlined text-sm">chevron_right</span></button>
             </div>
           </div>
         </div>
@@ -140,8 +318,147 @@
     </div>
   </main>
 
+  <!-- QR Code Modal -->
+  <div id="qrModal"
+    class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-emerald-950/50 backdrop-blur-sm transition-opacity">
+    <div
+      class="bg-white rounded-3xl shadow-xl border border-emerald-50 overflow-hidden text-left max-w-sm w-full mx-4 transform transition-transform scale-95 duration-200"
+      id="qrModalContent">
+      <div class="h-2 bg-gradient-to-r from-emerald-600 to-emerald-400"></div>
+      <div class="p-6 relative">
+        <button onclick="closeQRModal()"
+          class="absolute top-4 right-4 text-emerald-400 hover:text-emerald-600 transition-colors">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+        <div class="text-center mb-4">
+          <h3 class="font-headline font-bold text-xl text-emerald-900">Your Entry Pass</h3>
+          <p class="text-xs font-bold uppercase tracking-widest text-emerald-400 mt-1">Slot <span
+              id="modalSlotId"></span></p>
+        </div>
+
+        <div class="flex flex-col items-center py-3">
+          <div
+            class="w-48 h-48 bg-emerald-50 rounded-2xl flex flex-col items-center justify-center border-2 border-dashed border-emerald-200">
+            <span class="material-symbols-outlined text-emerald-400 text-7xl">qr_code_2</span>
+            <span class="text-[10px] font-bold uppercase tracking-tight text-emerald-400 mt-2">Scan at Entry Gate</span>
+          </div>
+          <p class="text-xs text-emerald-400 mt-3 italic mb-4">Show this QR code at the barrier</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <footer class="py-6 bg-emerald-100 text-center text-xs text-emerald-600 font-medium uppercase tracking-widest">
     © 2024 SmartPark Digital Ecosystem. All rights reserved.
   </footer>
+
+  <script>
+    function showQRModal(slotId) {
+      document.getElementById('modalSlotId').textContent = slotId;
+      const modal = document.getElementById('qrModal');
+      const content = document.getElementById('qrModalContent');
+
+      modal.classList.remove('hidden');
+      // small delay to allow display:block before rendering transition
+      setTimeout(() => {
+        content.classList.remove('scale-95');
+        content.classList.add('scale-100');
+      }, 10);
+    }
+
+    function closeQRModal() {
+      const modal = document.getElementById('qrModal');
+      const content = document.getElementById('qrModalContent');
+
+      content.classList.remove('scale-100');
+      content.classList.add('scale-95');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 200);
+    }
+
+    let currentCancelCard = null;
+
+    function showCancelModal(slotId, btnElement) {
+      document.getElementById('cancelSlotId').textContent = slotId;
+      currentCancelCard = btnElement.closest('.booking-card');
+      const modal = document.getElementById('cancelModal');
+      const content = document.getElementById('cancelModalContent');
+
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        content.classList.remove('scale-95');
+        content.classList.add('scale-100');
+      }, 10);
+    }
+
+    function closeCancelModal() {
+      const modal = document.getElementById('cancelModal');
+      const content = document.getElementById('cancelModalContent');
+
+      content.classList.remove('scale-100');
+      content.classList.add('scale-95');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        currentCancelCard = null;
+      }, 200);
+    }
+
+    function confirmCancel() {
+      if (currentCancelCard) {
+        // Change Status to Cancelled
+        const statusContainer = currentCancelCard.querySelector('.status-container');
+        if (statusContainer) {
+          statusContainer.innerHTML = '<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-red-50 text-red-600">Cancelled</span>';
+        }
+
+        // Change Actions to Details
+        const actionContainer = currentCancelCard.querySelector('.action-container');
+        if (actionContainer) {
+          actionContainer.innerHTML = '<button class="flex items-center gap-2 px-4 py-2 bg-emerald-50 text-emerald-600 rounded-xl font-bold text-sm hover:bg-emerald-100 transition-colors"><span class="material-symbols-outlined text-[18px]">info</span> Details</button>';
+        }
+
+        // Change Location Icon color to red
+        const iconLocation = currentCancelCard.querySelector('.material-symbols-outlined:first-child');
+        if (iconLocation && iconLocation.textContent.trim() === 'location_on') {
+          iconLocation.className = 'material-symbols-outlined text-red-400 text-xl font-bold';
+        }
+      }
+      closeCancelModal();
+    }
+  </script>
+
+  <!-- Cancel Confirmation Modal -->
+  <div id="cancelModal"
+    class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-emerald-950/50 backdrop-blur-sm transition-opacity">
+    <div
+      class="bg-white rounded-3xl shadow-xl border border-emerald-50 overflow-hidden text-left max-w-sm w-full mx-4 transform transition-transform scale-95 duration-200"
+      id="cancelModalContent">
+      <div class="h-2 bg-gradient-to-r from-red-500 to-rose-400"></div>
+      <div class="p-6 relative">
+        <button onclick="closeCancelModal()"
+          class="absolute top-4 right-4 text-emerald-400 hover:text-emerald-600 transition-colors">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+        <div class="text-center mb-4 mt-2">
+          <div class="w-16 h-16 bg-red-50 rounded-full mx-auto flex items-center justify-center mb-4">
+            <span class="material-symbols-outlined text-red-500 text-3xl">cancel</span>
+          </div>
+          <h3 class="font-headline font-bold text-xl text-emerald-900">Cancel Booking?</h3>
+          <p class="text-sm text-emerald-600 mt-2">Are you sure you want to cancel the booking for Slot <span
+              id="cancelSlotId" class="font-bold"></span>?</p>
+        </div>
+        <div class="flex gap-3 mt-6">
+          <button onclick="closeCancelModal()"
+            class="flex-1 py-3 bg-emerald-50 text-emerald-700 font-bold rounded-xl hover:bg-emerald-100 transition-all">No,
+            Keep It</button>
+          <button onclick="confirmCancel()"
+            class="flex-1 py-3 bg-red-500 text-white font-bold rounded-xl hover:bg-red-600 transition-all shadow-md shadow-red-200">Yes,
+            Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
+
 </html>
